@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1773283355729,
+  "timestamp": 1773283903790,
   "index": "/biblia-simples/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/biblia-simples/favicon.ico",
         "/biblia-simples/index.html",
-        "/biblia-simples/main-NGXLRM22.js",
+        "/biblia-simples/main-NVC7GK5W.js",
         "/biblia-simples/manifest.webmanifest",
         "/biblia-simples/styles-EVIT2QI3.css"
       ],
@@ -27,9 +27,6 @@
         "ignoreVary": true
       },
       "urls": [
-        "/biblia-simples/assets/ARA.json",
-        "/biblia-simples/assets/NVI.json",
-        "/biblia-simples/assets/NVT.json",
         "/biblia-simples/icons/icon-128x128.png",
         "/biblia-simples/icons/icon-144x144.png",
         "/biblia-simples/icons/icon-152x152.png",
@@ -44,9 +41,6 @@
   ],
   "dataGroups": [],
   "hashTable": {
-    "/biblia-simples/assets/ARA.json": "a324fafe431b874a176626ba4bf9915d992b466b",
-    "/biblia-simples/assets/NVI.json": "f7b7b894e2f8965fd4cbfcae885dae291429ef6e",
-    "/biblia-simples/assets/NVT.json": "b895607eff7de1cbe6a64ac94ffc2533efa8273b",
     "/biblia-simples/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
     "/biblia-simples/icons/icon-128x128.png": "f912963bdc6d5a38d8f1dd0afbaab2ce8d657acb",
     "/biblia-simples/icons/icon-144x144.png": "b155fd5f2fd5d2ea7760721063003c4cd95fd783",
@@ -56,8 +50,8 @@
     "/biblia-simples/icons/icon-512x512.png": "1de182f76f7329dfa8f9fcdd1fdcdd695bea6a99",
     "/biblia-simples/icons/icon-72x72.png": "aa88a6096bd973be7f6d7a5489bfa6bc2463f8c4",
     "/biblia-simples/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
-    "/biblia-simples/index.html": "a7944feb36c30cbdf45f92a89a26b48e0f7f2792",
-    "/biblia-simples/main-NGXLRM22.js": "9075dd9d7866bae05fdac6ce4abc0b029daa0b14",
+    "/biblia-simples/index.html": "02f47a3cb5de2ba0d48381253bbfe37889bdd235",
+    "/biblia-simples/main-NVC7GK5W.js": "e8af1844a2d747eabdd98b737b2a45e6e3f7bb6b",
     "/biblia-simples/manifest.webmanifest": "362b258b2a42bb8c08f40a90e1da3c38fc409aa9",
     "/biblia-simples/styles-EVIT2QI3.css": "5417008ade9efa8ca135835df83ea895a4762704"
   },

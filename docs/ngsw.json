@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1773282865902,
+  "timestamp": 1773283355729,
   "index": "/biblia-simples/index.html",
   "assetGroups": [
     {
@@ -27,6 +27,9 @@
         "ignoreVary": true
       },
       "urls": [
+        "/biblia-simples/assets/ARA.json",
+        "/biblia-simples/assets/NVI.json",
+        "/biblia-simples/assets/NVT.json",
         "/biblia-simples/icons/icon-128x128.png",
         "/biblia-simples/icons/icon-144x144.png",
         "/biblia-simples/icons/icon-152x152.png",
@@ -41,6 +44,9 @@
   ],
   "dataGroups": [],
   "hashTable": {
+    "/biblia-simples/assets/ARA.json": "a324fafe431b874a176626ba4bf9915d992b466b",
+    "/biblia-simples/assets/NVI.json": "f7b7b894e2f8965fd4cbfcae885dae291429ef6e",
+    "/biblia-simples/assets/NVT.json": "b895607eff7de1cbe6a64ac94ffc2533efa8273b",
     "/biblia-simples/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
     "/biblia-simples/icons/icon-128x128.png": "f912963bdc6d5a38d8f1dd0afbaab2ce8d657acb",
     "/biblia-simples/icons/icon-144x144.png": "b155fd5f2fd5d2ea7760721063003c4cd95fd783",

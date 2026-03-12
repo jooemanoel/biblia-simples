@@ -1,12 +1,50 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject, OnInit, ViewChild } from '@angular/core';
+import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { RouterModule } from '@angular/router';
+import { SwUpdate } from '@angular/service-worker';
+import { filter } from 'rxjs';
+import { Header } from './components/header/header';
+import { SideMenu } from './components/side-menu/side-menu';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterModule, Header, SideMenu, MatSidenavModule, MatSnackBarModule],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
-export class App {
-  protected readonly title = signal('biblia-simples');
+export class App implements OnInit {
+  swUpdate = inject(SwUpdate);
+  snackBar = inject(MatSnackBar);
+
+  @ViewChild(MatSidenav) drawer!: MatSidenav;
+
+  ngOnInit(): void {
+    this.checkForUpdates();
+  }
+
+  checkForUpdates() {
+    if (this.swUpdate.isEnabled) {
+      this.swUpdate.versionUpdates
+        .pipe(filter((evt) => evt.type === 'VERSION_READY'))
+        .subscribe(() => {
+          this.snackBar
+            .open('Nova versão disponível', 'Atualizar')
+            .onAction()
+            .subscribe(() => {
+              this.swUpdate
+                .activateUpdate()
+                .then(() => document.location.reload());
+            });
+        });
+    }
+  }
+
+  alternarMenu() {
+    this.drawer?.toggle();
+  }
+
+  closeMenu() {
+    this.drawer?.close();
+  }
 }

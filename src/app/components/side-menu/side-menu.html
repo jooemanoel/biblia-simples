@@ -1,0 +1,35 @@
+<mat-toolbar class="px-2" color="primary">
+  <button matMiniFab style="visibility: hidden">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="flex-fill text-center">Menu</span>
+  <button matMiniFab aria-label="Fechar" (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-nav-list>
+  @if (nivelNavegacao === 0) {
+    @for (versao of bibliaService.versoes; track versao) {
+      <a mat-list-item (click)="carregarVersao(versao)">
+        <mat-icon matListItemIcon>book</mat-icon>
+        <span matListItemTitle>{{ versao }}</span>
+      </a>
+    }
+  }
+  @if (nivelNavegacao === 1) {
+    @for (livro of bibliaService.biblia().livros; track $index) {
+      <a mat-list-item (click)="selecionarLivro(livro.name)">
+        <mat-icon matListItemIcon>menu_book</mat-icon>
+        <span matListItemTitle>{{ livro.name }}</span>
+      </a>
+    }
+  }
+  @if (nivelNavegacao === 2) {
+    @for (capitulo of bibliaService.livro().chapters; track $index) {
+      <a mat-list-item (click)="selecionarCapitulo($index + 1)">
+        <mat-icon matListItemIcon>menu_book</mat-icon>
+        <span matListItemTitle>{{ bibliaService.livro().name }} {{ $index + 1 }}</span>
+      </a>
+    }
+  }
+</mat-nav-list>

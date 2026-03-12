@@ -1,0 +1,9 @@
+<mat-toolbar class="px-2" color="primary">
+  <button matMiniFab (click)="alternar()" aria-label="Abrir menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="flex-fill text-center">{{ bibliaService.titulo() }}</span>
+  <button matMiniFab (click)="alternarTema()">
+    <mat-icon>brightness_6</mat-icon>
+  </button>
+</mat-toolbar>

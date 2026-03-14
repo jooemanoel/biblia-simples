@@ -1,74 +1,65 @@
-import { computed, inject, Injectable, signal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
+import ARA from '../../assets/ARA.json';
+import NVI from '../../assets/NVI.json';
+import NVT from '../../assets/NVT.json';
 import { Biblia } from '../domain/biblia';
-import { Livro } from '../domain/livro';
-import { CarregarBibliaService } from './carregar-biblia-service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BibliaService {
-  carregarBibliaService = inject(CarregarBibliaService);
+  versoesBiblia: Record<string, Biblia> = {
+    ARA: new Biblia('ARA', ARA as any),
+    NVI: new Biblia('NVI', NVI as any),
+    NVT: new Biblia('NVT', NVT as any),
+  };
+  versoes = Object.keys(this.versoesBiblia);
 
-  versoes = ['ARA', 'NVI', 'NVT'];
+  versao = signal<string>('NVT');
+  livroId = signal<number>(0);
+  capituloId = signal<number>(0);
 
-  biblia = signal<Biblia>(new Biblia(''));
-  livro = signal<Livro>({ name: '', abbrev: '', chapters: [] });
-  capitulo = signal<number>(0);
+  biblia = computed(() => this.versoesBiblia[this.versao()]);
+  livro = computed(() => this.biblia().livros[this.livroId()]);
+  capitulo = computed(() => this.livro().chapters[this.capituloId()]);
+  titulo = computed(() => `${this.biblia().livros[this.livroId()].name} ${this.capituloId() + 1}`);
+  isPrimeiroCapitulo = computed(() => this.capituloId() === 0);
+  isUltimoCapitulo = computed(() => this.capituloId() === this.livro().chapters.length - 1);
 
-  textoCapitulo = computed<string[]>(() => {
-    if (!this.livro().name || !this.capitulo()) {
-      return [];
-    }
-    return this.livro().chapters[this.capitulo() - 1] || [];
-  });
-
-  titulo = computed(() =>
-    this.livro().name && this.capitulo() ? `${this.livro().name} ${this.capitulo()}` : 'Bíblia',
-  );
-
-  
-
-  carregarVersao(version: string) {
-    this.carregarBibliaService.loadVersion(version).subscribe({
-      next: (data) => {
-        this.biblia.set(new Biblia(version, data));
-        console.log(`Versão ${version} carregada com sucesso!`);
-      },
-      error: (error) => {
-        console.error(`Erro ao carregar a versão ${version}:`, error);
-      },
-    });
+  selecionarVersao(version: string) {
+    this.versao.set(version);
+    this.salvarEstado();
   }
 
-  selecionarLivro(name: string) {
-    if (!this.biblia()) {
-      console.error('A Bíblia ainda não foi carregada. Carregue uma versão primeiro.');
-      return;
-    }
-
-    const livro = this.biblia().livros.find((l) => l.name === name);
-    if (livro) {
-      this.livro.set(livro);
-      console.log(`Livro selecionado: ${livro.name}`);
-    } else {
-      console.error(`Livro com nome "${name}" não encontrado.`);
-    }
+  selecionarLivro(index: number) {
+    this.livroId.set(index);
+    this.analisarCapitulo();
+    this.salvarEstado();
   }
 
   selecionarCapitulo(capitulo: number) {
-    if (!this.livro()) {
-      console.error('Nenhum livro selecionado. Selecione um livro primeiro.');
-      return;
-    }
+    this.capituloId.set(capitulo);
+    this.analisarCapitulo();
+    this.salvarEstado();
+  }
 
-    if (capitulo < 1 || capitulo > this.livro().chapters.length) {
-      console.error(
-        `Capítulo inválido. O livro "${this.livro().name}" tem ${this.livro().chapters.length} capítulos.`,
-      );
-      return;
-    }
+  analisarCapitulo() {
+    if (this.capituloId() > this.biblia().livros[this.livroId()].chapters.length - 1)
+      this.capituloId.set(0);
+  }
 
-    this.capitulo.set(capitulo);
-    console.log(`Capítulo selecionado: ${capitulo}`);
+  salvarEstado() {
+    localStorage.setItem('versao', this.versao());
+    localStorage.setItem('livroId', this.livroId().toString());
+    localStorage.setItem('capituloId', this.capituloId().toString());
+  }
+
+  carregarEstado() {
+    const versaoSalva = localStorage.getItem('versao');
+    const livroIdSalvo = localStorage.getItem('livroId');
+    const capituloIdSalvo = localStorage.getItem('capituloId');
+    if (versaoSalva) this.versao.set(versaoSalva);
+    if (livroIdSalvo) this.livroId.set(parseInt(livroIdSalvo));
+    if (capituloIdSalvo) this.capituloId.set(parseInt(capituloIdSalvo));
   }
 }

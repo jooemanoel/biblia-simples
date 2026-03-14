@@ -1,9 +1,25 @@
 <div class="container-fluid p-1">
-  @if (bibliaService.textoCapitulo().length === 0) {
+  @if (bibliaService.capitulo().length === 0) {
     <p class="text-center">Selecione um capítulo para exibir o texto.</p>
   } @else {
-    @for (versiculo of bibliaService.textoCapitulo(); track $index) {
+    @for (versiculo of bibliaService.capitulo(); track $index) {
       <p class="m-0">{{ $index + 1 }} - {{ versiculo }}</p>
     }
   }
 </div>
+<footer class="w-100 d-flex justify-content-between p-2">
+  <button
+    [disabled]="bibliaService.isPrimeiroCapitulo()"
+    matMiniFab
+    (click)="bibliaService.selecionarCapitulo(bibliaService.capituloId() - 1)"
+  >
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <button
+    [disabled]="bibliaService.isUltimoCapitulo()"
+    matMiniFab
+    (click)="bibliaService.selecionarCapitulo(bibliaService.capituloId() + 1)"
+  >
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
+</footer>

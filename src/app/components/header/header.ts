@@ -4,6 +4,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { BibliaService } from '../../services/biblia-service';
+import { TemaService } from '../../services/tema-service';
+import { MenuService } from '../../services/menu-service';
+import { FontService } from '../../services/font-service';
 
 @Component({
   selector: 'app-header',
@@ -12,18 +15,8 @@ import { BibliaService } from '../../services/biblia-service';
   styleUrl: './header.css',
 })
 export class Header {
+  temaService = inject(TemaService);
+  menuService = inject(MenuService);
   bibliaService = inject(BibliaService);
-
-  @Output() alternarMenu = new EventEmitter();
-
-  tema: 'light' | 'dark' = 'dark';
-
-  alternarTema() {
-    this.tema = this.tema === 'light' ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-bs-theme', this.tema);
-  }
-
-  alternar() {
-    this.alternarMenu.emit();
-  }
+  fontService = inject(FontService);
 }

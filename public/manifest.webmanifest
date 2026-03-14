@@ -1,6 +1,6 @@
 {
-  "name": "biblia-simples",
-  "short_name": "biblia-simples",
+  "name": "Bíblia",
+  "short_name": "Bíblia",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",

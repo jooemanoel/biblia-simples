@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1773283903790,
+  "timestamp": 1773523988053,
   "index": "/biblia-simples/index.html",
   "assetGroups": [
     {
@@ -13,9 +13,9 @@
       "urls": [
         "/biblia-simples/favicon.ico",
         "/biblia-simples/index.html",
-        "/biblia-simples/main-NVC7GK5W.js",
+        "/biblia-simples/main-HOAMZX35.js",
         "/biblia-simples/manifest.webmanifest",
-        "/biblia-simples/styles-EVIT2QI3.css"
+        "/biblia-simples/styles-6APTPYA6.css"
       ],
       "patterns": []
     },
@@ -42,18 +42,18 @@
   "dataGroups": [],
   "hashTable": {
     "/biblia-simples/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
-    "/biblia-simples/icons/icon-128x128.png": "f912963bdc6d5a38d8f1dd0afbaab2ce8d657acb",
-    "/biblia-simples/icons/icon-144x144.png": "b155fd5f2fd5d2ea7760721063003c4cd95fd783",
-    "/biblia-simples/icons/icon-152x152.png": "eae6e0f0c8afb8aaae339e2a569b43e9238e5e6c",
-    "/biblia-simples/icons/icon-192x192.png": "15c4180454633880d98674aa7394656196c91584",
-    "/biblia-simples/icons/icon-384x384.png": "94a915751ef6c9282df9aea405ad679230631814",
-    "/biblia-simples/icons/icon-512x512.png": "1de182f76f7329dfa8f9fcdd1fdcdd695bea6a99",
-    "/biblia-simples/icons/icon-72x72.png": "aa88a6096bd973be7f6d7a5489bfa6bc2463f8c4",
-    "/biblia-simples/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
-    "/biblia-simples/index.html": "02f47a3cb5de2ba0d48381253bbfe37889bdd235",
-    "/biblia-simples/main-NVC7GK5W.js": "e8af1844a2d747eabdd98b737b2a45e6e3f7bb6b",
-    "/biblia-simples/manifest.webmanifest": "362b258b2a42bb8c08f40a90e1da3c38fc409aa9",
-    "/biblia-simples/styles-EVIT2QI3.css": "5417008ade9efa8ca135835df83ea895a4762704"
+    "/biblia-simples/icons/icon-128x128.png": "9f8257012c6a6c192430082436e8d04f39a69d86",
+    "/biblia-simples/icons/icon-144x144.png": "b6bbdb893bc4a9ebdf474a29f7bf411d36537e9c",
+    "/biblia-simples/icons/icon-152x152.png": "b2d3952daa4484c31af64566afc2fb2b7ec89a46",
+    "/biblia-simples/icons/icon-192x192.png": "863b50d3d34f826c5e3a6153fdc59016db4c65e3",
+    "/biblia-simples/icons/icon-384x384.png": "156ef347dc61aae3b3ed8dcbe9a5e3bcdf9aae83",
+    "/biblia-simples/icons/icon-512x512.png": "e0b617be81828915e104804a2cb99e4190011e62",
+    "/biblia-simples/icons/icon-72x72.png": "4df327134dfc3e35ecd1799fcb4f0c9846c0f2c5",
+    "/biblia-simples/icons/icon-96x96.png": "8f75effd17b41226fcb6d62e7cfbb5179f328788",
+    "/biblia-simples/index.html": "918d56e5820639f65d2dab9b896d377a9bf219e1",
+    "/biblia-simples/main-HOAMZX35.js": "91a2e8f24cd51e06772f99f7482c958c5936ebc5",
+    "/biblia-simples/manifest.webmanifest": "b8276f30f9e97418df44d99572195ee9c7c2d478",
+    "/biblia-simples/styles-6APTPYA6.css": "331de20807625f49fc8868d7e4385d56f18d5e66"
   },
   "navigationUrls": [
     {

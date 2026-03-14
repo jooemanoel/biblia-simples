@@ -1,26 +1,38 @@
-import { Component, inject, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { RouterModule } from '@angular/router';
 import { SwUpdate } from '@angular/service-worker';
 import { filter } from 'rxjs';
 import { Header } from './components/header/header';
 import { SideMenu } from './components/side-menu/side-menu';
+import { PaginaInicial } from './features/pagina-inicial/pagina-inicial';
+import { BibliaService } from './services/biblia-service';
+import { FontService } from './services/font-service';
+import { MenuService } from './services/menu-service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterModule, Header, SideMenu, MatSidenavModule, MatSnackBarModule],
+  imports: [Header, SideMenu, MatSidenavModule, MatSnackBarModule, PaginaInicial],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
-export class App implements OnInit {
+export class App implements OnInit, AfterViewInit {
   swUpdate = inject(SwUpdate);
   snackBar = inject(MatSnackBar);
+  menuService = inject(MenuService);
+  fontService = inject(FontService);
+  bibliaService = inject(BibliaService);
 
-  @ViewChild(MatSidenav) drawer!: MatSidenav;
+  @ViewChild(MatSidenav) sidenav!: MatSidenav;
 
   ngOnInit(): void {
     this.checkForUpdates();
+    this.bibliaService.carregarEstado();
+    this.fontService.carregarTamanhoFonte();
+  }
+
+  ngAfterViewInit(): void {
+    this.menuService.setSidenav(this.sidenav);
   }
 
   checkForUpdates() {
@@ -32,19 +44,9 @@ export class App implements OnInit {
             .open('Nova versão disponível', 'Atualizar')
             .onAction()
             .subscribe(() => {
-              this.swUpdate
-                .activateUpdate()
-                .then(() => document.location.reload());
+              this.swUpdate.activateUpdate().then(() => document.location.reload());
             });
         });
     }
-  }
-
-  alternarMenu() {
-    this.drawer?.toggle();
-  }
-
-  closeMenu() {
-    this.drawer?.close();
   }
 }

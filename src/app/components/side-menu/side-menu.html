@@ -3,30 +3,44 @@
     <mat-icon>menu</mat-icon>
   </button>
   <span class="flex-fill text-center">Menu</span>
-  <button matMiniFab aria-label="Fechar" (click)="close()">
+  <button matMiniFab aria-label="Fechar" (click)="menuService.close()">
     <mat-icon>close</mat-icon>
   </button>
 </mat-toolbar>
 <mat-nav-list>
-  @if (nivelNavegacao === 0) {
+  @if (menuService.nivelNavegacao === 0) {
+    <a mat-list-item (click)="menuService.nivelNavegacao = 1">
+      <mat-icon matListItemIcon>book</mat-icon>
+      <span matListItemTitle>Versão: {{ bibliaService.biblia().versao }}</span>
+    </a>
+    <a mat-list-item (click)="menuService.nivelNavegacao = 2">
+      <mat-icon matListItemIcon>book</mat-icon>
+      <span matListItemTitle>Livro: {{ bibliaService.livro().name }}</span>
+    </a>
+    <a mat-list-item (click)="menuService.nivelNavegacao = 3">
+      <mat-icon matListItemIcon>book</mat-icon>
+      <span matListItemTitle>Capítulo: {{ bibliaService.capituloId() + 1 }}</span>
+    </a>
+  }
+  @if (menuService.nivelNavegacao === 1) {
     @for (versao of bibliaService.versoes; track versao) {
-      <a mat-list-item (click)="carregarVersao(versao)">
+      <a mat-list-item (click)="menuService.selecionarVersao(versao)">
         <mat-icon matListItemIcon>book</mat-icon>
         <span matListItemTitle>{{ versao }}</span>
       </a>
     }
   }
-  @if (nivelNavegacao === 1) {
+  @if (menuService.nivelNavegacao === 2) {
     @for (livro of bibliaService.biblia().livros; track $index) {
-      <a mat-list-item (click)="selecionarLivro(livro.name)">
+      <a mat-list-item (click)="menuService.selecionarLivro($index)">
         <mat-icon matListItemIcon>menu_book</mat-icon>
         <span matListItemTitle>{{ livro.name }}</span>
       </a>
     }
   }
-  @if (nivelNavegacao === 2) {
+  @if (menuService.nivelNavegacao === 3) {
     @for (capitulo of bibliaService.livro().chapters; track $index) {
-      <a mat-list-item (click)="selecionarCapitulo($index + 1)">
+      <a mat-list-item (click)="menuService.selecionarCapitulo($index)">
         <mat-icon matListItemIcon>menu_book</mat-icon>
         <span matListItemTitle>{{ bibliaService.livro().name }} {{ $index + 1 }}</span>
       </a>

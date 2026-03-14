@@ -1,9 +1,9 @@
 <mat-sidenav-container style="height: 100vh">
-  <mat-sidenav #drawer mode="over" position="start">
-    <app-side-menu (closeMenu)="closeMenu()"></app-side-menu>
+  <mat-sidenav mode="over" position="start" (closed)="menuService.onClose()">
+    <app-side-menu></app-side-menu>
   </mat-sidenav>
   <mat-sidenav-content>
-    <app-header (alternarMenu)="alternarMenu()"></app-header>
-    <router-outlet></router-outlet>
+    <app-header></app-header>
+    <app-pagina-inicial></app-pagina-inicial>
   </mat-sidenav-content>
 </mat-sidenav-container>

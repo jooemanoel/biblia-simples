@@ -1,9 +1,15 @@
-<mat-toolbar class="px-2" color="primary">
-  <button matMiniFab (click)="alternar()" aria-label="Abrir menu">
+<mat-toolbar class="px-2 gap-2" color="primary">
+  <button matMiniFab (click)="menuService.toggle()" aria-label="Abrir menu">
     <mat-icon>menu</mat-icon>
   </button>
+  <button matIconButton (click)="fontService.diminuirFonte()" aria-label="Diminuir tamanho da fonte">
+    <mat-icon>remove</mat-icon>
+  </button>
   <span class="flex-fill text-center">{{ bibliaService.titulo() }}</span>
-  <button matMiniFab (click)="alternarTema()">
+  <button matIconButton (click)="fontService.aumentarFonte()" aria-label="Aumentar tamanho da fonte">
+    <mat-icon>add</mat-icon>
+  </button>
+  <button matMiniFab (click)="temaService.alternarTema()">
     <mat-icon>brightness_6</mat-icon>
   </button>
 </mat-toolbar>

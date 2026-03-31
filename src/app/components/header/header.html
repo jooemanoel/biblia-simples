@@ -1,28 +1,32 @@
-<mat-toolbar class="header px-2 gap-2" color="primary">
-  <button matButton [matMenuTriggerFor]="menuVersao">{{ bibliaService.versao() }}</button>
+<mat-toolbar class="header p-0" color="primary">
+  <button matButton [matMenuTriggerFor]="menuVersao" class="font-large">
+    {{ bibliaService.versao() }}
+  </button>
   <mat-menu #menuVersao="matMenu">
     @for (versao of bibliaService.versoes; track $index) {
-      <button mat-menu-item (click)="bibliaService.selecionarVersao(versao)">
+      <button mat-menu-item (click)="bibliaService.selecionarVersao(versao)" class="font-large">
         {{ versao }}
       </button>
     }
   </mat-menu>
 
-  <button class="flex-fill text-center" matButton [matMenuTriggerFor]="menuLivro">
+  <button class="flex-fill text-center font-large" matButton [matMenuTriggerFor]="menuLivro">
     {{ bibliaService.livro().name.toUpperCase() }}
   </button>
   <mat-menu #menuLivro="matMenu">
     @for (livro of bibliaService.biblia().livros; track $index) {
-      <button mat-menu-item (click)="bibliaService.selecionarLivro($index)">
+      <button mat-menu-item (click)="bibliaService.selecionarLivro($index)" class="font-large">
         {{ livro.name.toUpperCase() }}
       </button>
     }
   </mat-menu>
 
-  <button matButton [matMenuTriggerFor]="menuCapitulo">{{ bibliaService.capituloId() + 1 }}</button>
+  <button matButton [matMenuTriggerFor]="menuCapitulo" class="font-large">
+    {{ bibliaService.capituloId() + 1 }}
+  </button>
   <mat-menu #menuCapitulo="matMenu">
     @for (capitulo of bibliaService.livro().chapters; track $index) {
-      <button mat-menu-item (click)="bibliaService.selecionarCapitulo($index)">
+      <button mat-menu-item (click)="bibliaService.selecionarCapitulo($index)" class="font-large">
         {{ $index + 1 }}
       </button>
     }

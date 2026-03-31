@@ -1,4 +1,4 @@
-<div class="container-fluid p-1">
+<main class="main container-fluid px-1">
   @if (bibliaService.capitulo().length === 0) {
     <p class="text-center">Selecione um capítulo para exibir o texto.</p>
   } @else {
@@ -6,4 +6,4 @@
       <p class="m-0">{{ $index + 1 }} - {{ versiculo }}</p>
     }
   }
-</div>
+</main>

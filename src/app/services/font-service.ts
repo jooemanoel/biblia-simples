@@ -15,7 +15,7 @@ export class FontService {
   }
 
   aumentarFonte() {
-    this.tamanhoBase = Math.min(this.tamanhoBase + 2, 32); // max 32px
+    this.tamanhoBase = Math.min(this.tamanhoBase + 2, 48); // max 48px
     this.atualizarFonte();
   }
 

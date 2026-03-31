@@ -2,6 +2,8 @@
 
 :root {
   --font-size-base: 16px;
+  --header-height: 48px;
+  --footer-height: 56px;
 }
 
 p {
@@ -10,8 +12,8 @@ p {
 
 /* Garantir que o conteúdo principal não fique oculto sob o header e o footer fixos */
 mat-sidenav-content {
-  padding-top: 64px !important;
-  padding-bottom: 64px !important;
+  padding-top: var(--header-height) !important;
+  padding-bottom: var(--footer-height) !important;
 }
 
 .footer {
@@ -19,14 +21,9 @@ mat-sidenav-content {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 64px;
+  height: var(--footer-height);
   border: none;
   z-index: 1000;
-}
-
-/* Espaço seguro para evitar que o conteúdo fique sob o footer fixo */
-:host ::ng-deep mat-sidenav-content {
-  padding-bottom: 64px;
 }
 
 mat-toolbar.header {
@@ -34,11 +31,15 @@ mat-toolbar.header {
   top: 0;
   left: 0;
   right: 0;
-  height: 48px;
+  height: var(--header-height);
   z-index: 1000;
 }
 
 :host {
   display: block;
   margin-top: 0;
+}
+
+.font-large {
+  font-size: large;
 }

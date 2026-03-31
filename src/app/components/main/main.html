@@ -1,0 +1,9 @@
+<div class="container-fluid p-1">
+  @if (bibliaService.capitulo().length === 0) {
+    <p class="text-center">Selecione um capítulo para exibir o texto.</p>
+  } @else {
+    @for (versiculo of bibliaService.capitulo(); track $index) {
+      <p class="m-0">{{ $index + 1 }} - {{ versiculo }}</p>
+    }
+  }
+</div>

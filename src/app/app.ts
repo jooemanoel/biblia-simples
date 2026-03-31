@@ -4,15 +4,16 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { SwUpdate } from '@angular/service-worker';
 import { filter } from 'rxjs';
 import { Header } from './components/header/header';
+import { Main } from './components/main/main';
 import { SideMenu } from './components/side-menu/side-menu';
-import { PaginaInicial } from './features/pagina-inicial/pagina-inicial';
 import { BibliaService } from './services/biblia-service';
 import { FontService } from './services/font-service';
 import { MenuService } from './services/menu-service';
+import { Footer } from "./components/footer/footer";
 
 @Component({
   selector: 'app-root',
-  imports: [Header, SideMenu, MatSidenavModule, MatSnackBarModule, PaginaInicial],
+  imports: [Header, SideMenu, MatSidenavModule, MatSnackBarModule, Main, Footer],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

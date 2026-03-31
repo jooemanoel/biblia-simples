@@ -1,0 +1,36 @@
+<mat-toolbar class="footer justify-content-between px-2 gap-2" color="primary">
+  <button
+    matIconButton
+    (click)="fontService.diminuirFonte()"
+    aria-label="Diminuir tamanho da fonte"
+  >
+    <mat-icon>remove</mat-icon>
+  </button>
+  <button
+    matIconButton
+    (click)="fontService.aumentarFonte()"
+    aria-label="Aumentar tamanho da fonte"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+  <button matMiniFab (click)="temaService.alternarTema()">
+    <mat-icon>brightness_6</mat-icon>
+  </button>
+  <button matMiniFab>
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button
+    [disabled]="bibliaService.isPrimeiroCapitulo()"
+    matMiniFab
+    (click)="bibliaService.selecionarCapitulo(bibliaService.capituloId() - 1)"
+  >
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <button
+    [disabled]="bibliaService.isUltimoCapitulo()"
+    matMiniFab
+    (click)="bibliaService.selecionarCapitulo(bibliaService.capituloId() + 1)"
+  >
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
+</mat-toolbar>
